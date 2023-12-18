@@ -16,7 +16,6 @@ public class RotateOnClick : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CheckTouch(Input.mousePosition);
-            Debug.Log("Moues on click");
         }
     }
 
@@ -27,7 +26,6 @@ public class RotateOnClick : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Hit: " + hit.transform.name);
             // オブジェクトがタッチされた場合
             if (hit.transform == transform)
             {

@@ -5,3 +5,5 @@
 制限時間内にお題の形にすることが主な役割です。
 
 難易度調整は複数のパンを指定の向きに変更することを想定しています。
+
+<img width="420" alt="SCR-20230502-nedr" src="https://github.com/Amanyamuramu/BreadRedirection/assets/92976267/d94467f6-9045-49ef-9c71-cbca5b70bf36" >

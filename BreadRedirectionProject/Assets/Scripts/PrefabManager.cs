@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 
 public class PrefabManager : MonoBehaviour
@@ -18,8 +19,8 @@ public class PrefabManager : MonoBehaviour
 
     [SerializeField] private Quaternion correctRotation;
 
-    public Text correctText;
-    public Text incorrectText;
+    [SerializeField] TextMeshProUGUI correctText;
+    [SerializeField] TextMeshProUGUI incorrectText;
 
     private int correctCount = 0;
     private int incorrectCount = 0;

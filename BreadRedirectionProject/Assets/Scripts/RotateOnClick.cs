@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RotateOnClick : MonoBehaviour
 {
-    private float rotationAngle = 45.0f; // 回転角度（360/8）
+    private float rotationAngle = 22.5f; // 回転角度（360/8）
 
     private void Update()
     {

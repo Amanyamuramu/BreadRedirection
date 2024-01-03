@@ -440,7 +440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 1452}
+  m_AnchoredPosition: {x: -465, y: 1460}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &333001658
@@ -1088,8 +1088,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -255.20001, y: -591}
-  m_SizeDelta: {x: 1309.8, y: 5746}
+  m_AnchoredPosition: {x: -536.5, y: 283}
+  m_SizeDelta: {x: 747.1, y: 3997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &909401153
 MonoBehaviour:
@@ -1526,7 +1526,7 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 4494468359994485285, guid: db384c1d252e7784eadaabedac8a3398, type: 3}
   correctIndicatorPrefab: {fileID: 4494468359994485285, guid: db384c1d252e7784eadaabedac8a3398, type: 3}
   spawnPoint: {x: 0, y: 0.5, z: 3}
-  correctIndicatorPosition: {x: -2, y: 0.5, z: 4}
+  correctIndicatorPosition: {x: -2.3, y: 1.5, z: 4.5}
   spawnInterval: 4
   numberOfPrefabs: 3
   moveSpeed: 3

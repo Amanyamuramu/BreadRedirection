@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 public class PrefabManager : MonoBehaviour
 {
@@ -32,19 +34,57 @@ public class PrefabManager : MonoBehaviour
         incorrectText.text = ": 0";
     }
 
-    private void SpawnAndMovePrefabs()
-    {
-        for (int i = 0; i < numberOfPrefabs; i++)
-        {
-            float randomX = Random.Range(minX, maxX);
-            Vector3 randomSpawnPoint = new Vector3(randomX, spawnPoint.y, spawnPoint.z);
-            float randomYRotation = Random.Range(0, 8) * 45.0f;
-            Quaternion randomRotation = Quaternion.Euler(0, randomYRotation, 0);
+    // private void SpawnAndMovePrefabs()
+    // {
+    //     for (int i = 0; i < numberOfPrefabs; i++)
+    //     {
+    //         float randomX = Random.Range(minX, maxX);
+    //         Vector3 randomSpawnPoint = new Vector3(randomX, spawnPoint.y, spawnPoint.z);
+    //         float randomYRotation = Random.Range(0, 8) * 45.0f;
+    //         Quaternion randomRotation = Quaternion.Euler(0, randomYRotation, 0);
 
-            GameObject newPrefab = Instantiate(prefabToSpawn, randomSpawnPoint, randomRotation);
-            newPrefab.AddComponent<PrefabBehavior>().Initialize(moveSpeed, moveDirection, correctRotation, this);
-        }
+    //         GameObject newPrefab = Instantiate(prefabToSpawn, randomSpawnPoint, randomRotation);
+    //         newPrefab.AddComponent<PrefabBehavior>().Initialize(moveSpeed, moveDirection, correctRotation, this);
+    //     }
+    // }
+
+    private void SpawnAndMovePrefabs()
+{
+    List<Vector3> usedPositions = new List<Vector3>();
+
+    for (int i = 0; i < numberOfPrefabs; i++)
+    {
+        float randomX;
+        Vector3 randomSpawnPoint;
+        bool positionValid;
+
+        // 重複しない位置を探す
+        do
+        {
+            randomX = Random.Range(minX, maxX);
+            randomSpawnPoint = new Vector3(randomX, spawnPoint.y, spawnPoint.z);
+            positionValid = true;
+
+            // すでに使用されている位置との間隔をチェック
+            foreach (Vector3 usedPos in usedPositions)
+            {
+                if (Vector3.Distance(randomSpawnPoint, usedPos) < 1.0f) // 1.0f は最小間隔
+                {
+                    positionValid = false;
+                    break;
+                }
+            }
+        } while (!positionValid);
+
+        usedPositions.Add(randomSpawnPoint);
+
+        float randomYRotation = Random.Range(0, 8) * 45.0f;
+        Quaternion randomRotation = Quaternion.Euler(0, randomYRotation, 0);
+
+        GameObject newPrefab = Instantiate(prefabToSpawn, randomSpawnPoint, randomRotation);
+        newPrefab.AddComponent<PrefabBehavior>().Initialize(moveSpeed, moveDirection, correctRotation, this);
     }
+}
 
     public void IncrementCorrectCount()
     {

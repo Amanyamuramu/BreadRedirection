@@ -22,11 +22,17 @@ public class PrefabManager : MonoBehaviour
     public int correctCount = 0;
     public int incorrectCount = 0;
 
+    public AudioClip correctSound;
+    public AudioClip incorrectSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
         correctRotation = Quaternion.Euler(0, Random.Range(0, 8) * 45.0f, 0);
         Instantiate(correctIndicatorPrefab, correctIndicatorPosition, correctRotation);
         InvokeRepeating("SpawnAndMovePrefabs", 0.0f, spawnInterval);
+        
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void SpawnAndMovePrefabs()
@@ -72,11 +78,13 @@ public class PrefabManager : MonoBehaviour
     public void IncrementCorrectCount()
     {
         correctCount++;
+        audioSource.PlayOneShot(correctSound);
     }
 
     public void IncrementIncorrectCount()
     {
         incorrectCount++;
+        audioSource.PlayOneShot(incorrectSound);
     }
 }
 

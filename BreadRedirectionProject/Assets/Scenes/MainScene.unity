@@ -1502,6 +1502,8 @@ MonoBehaviour:
   correctRotation: {x: 0, y: 0, z: 0, w: 0}
   correctCount: 0
   incorrectCount: 0
+  correctSound: {fileID: 8300000, guid: 2aa741744b2439949ac2f06997bc8836, type: 3}
+  incorrectSound: {fileID: 8300000, guid: 2da9c892c226c8d408af20686f2b56bb, type: 3}
 --- !u!1 &1793010793
 GameObject:
   m_ObjectHideFlags: 0

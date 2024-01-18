@@ -9,15 +9,13 @@ public class PrefabManager : MonoBehaviour
     public GameObject correctIndicatorPrefab;
     public Vector3 spawnPoint;
     public Vector3 correctIndicatorPosition;
-    public float spawnInterval = 1.0f;
-    public int numberOfPrefabs = 5;
-    public float moveSpeed = 5.0f;
-    public Vector3 moveDirection = new Vector3(0, 0, -1);
-    public float minX = -5.0f;
-    public float maxX = 5.0f;
-
-    [SerializeField]
-    private Quaternion correctRotation;
+    public float spawnInterval = 2.0f;
+    public int numberOfPrefabs = 1;
+    float moveSpeed = 0.5f;
+    Vector3 moveDirection = new Vector3(0, 0, -1);
+    float minX = -2.0f;
+    float maxX = 2.0f;
+    Quaternion correctRotation;
 
     public int correctCount = 0;
     public int incorrectCount = 0;
@@ -26,6 +24,8 @@ public class PrefabManager : MonoBehaviour
     public AudioClip incorrectSound;
     private AudioSource audioSource;
 
+    private float elapsedTime = 0.0f; 
+
     private void Start()
     {
         correctRotation = Quaternion.Euler(0, Random.Range(0, 8) * 45.0f, 0);
@@ -33,6 +33,25 @@ public class PrefabManager : MonoBehaviour
         InvokeRepeating("SpawnAndMovePrefabs", 0.0f, spawnInterval);
         
         audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
+     private void Update()
+    {
+        elapsedTime += Time.deltaTime;
+
+        // 経過時間に応じてnumberOfPrefabsの値を更新
+        if (elapsedTime >= 40.0f)
+        {
+            numberOfPrefabs = 3;
+        }
+        else if (elapsedTime >= 20.0f)
+        {
+            numberOfPrefabs = 2;
+        }
+        else if (elapsedTime >= 0.0f)
+        {
+            numberOfPrefabs = 1;
+        }
     }
 
     private void SpawnAndMovePrefabs()

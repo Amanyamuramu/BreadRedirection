@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 
-
 public class PrefabManager : MonoBehaviour
 {
     public GameObject prefabToSpawn;
@@ -17,13 +16,17 @@ public class PrefabManager : MonoBehaviour
     public float minX = -5.0f;
     public float maxX = 5.0f;
 
-    [SerializeField] private Quaternion correctRotation;
+    [SerializeField]
+    private Quaternion correctRotation;
 
-    [SerializeField] TextMeshProUGUI correctText;
-    [SerializeField] TextMeshProUGUI incorrectText;
+    [SerializeField]
+    TextMeshProUGUI correctText;
 
-    private int correctCount = 0;
-    private int incorrectCount = 0;
+    [SerializeField]
+    TextMeshProUGUI incorrectText;
+
+    public int correctCount = 0;
+    public int incorrectCount = 0;
 
     private void Start()
     {
@@ -35,57 +38,45 @@ public class PrefabManager : MonoBehaviour
         incorrectText.text = ": 0";
     }
 
-    // private void SpawnAndMovePrefabs()
-    // {
-    //     for (int i = 0; i < numberOfPrefabs; i++)
-    //     {
-    //         float randomX = Random.Range(minX, maxX);
-    //         Vector3 randomSpawnPoint = new Vector3(randomX, spawnPoint.y, spawnPoint.z);
-    //         float randomYRotation = Random.Range(0, 8) * 45.0f;
-    //         Quaternion randomRotation = Quaternion.Euler(0, randomYRotation, 0);
-
-    //         GameObject newPrefab = Instantiate(prefabToSpawn, randomSpawnPoint, randomRotation);
-    //         newPrefab.AddComponent<PrefabBehavior>().Initialize(moveSpeed, moveDirection, correctRotation, this);
-    //     }
-    // }
-
     private void SpawnAndMovePrefabs()
-{
-    List<Vector3> usedPositions = new List<Vector3>();
-
-    for (int i = 0; i < numberOfPrefabs; i++)
     {
-        float randomX;
-        Vector3 randomSpawnPoint;
-        bool positionValid;
+        List<Vector3> usedPositions = new List<Vector3>();
 
-        // 重複しない位置を探す
-        do
+        for (int i = 0; i < numberOfPrefabs; i++)
         {
-            randomX = Random.Range(minX, maxX);
-            randomSpawnPoint = new Vector3(randomX, spawnPoint.y, spawnPoint.z);
-            positionValid = true;
+            float randomX;
+            Vector3 randomSpawnPoint;
+            bool positionValid;
 
-            // すでに使用されている位置との間隔をチェック
-            foreach (Vector3 usedPos in usedPositions)
+            // 重複しない位置を探す
+            do
             {
-                if (Vector3.Distance(randomSpawnPoint, usedPos) < 1.0f) // 1.0f は最小間隔
+                randomX = Random.Range(minX, maxX);
+                randomSpawnPoint = new Vector3(randomX, spawnPoint.y, spawnPoint.z);
+                positionValid = true;
+
+                // すでに使用されている位置との間隔をチェック
+                foreach (Vector3 usedPos in usedPositions)
                 {
-                    positionValid = false;
-                    break;
+                    if (Vector3.Distance(randomSpawnPoint, usedPos) < 1.0f) // 1.0f は最小間隔
+                    {
+                        positionValid = false;
+                        break;
+                    }
                 }
-            }
-        } while (!positionValid);
+            } while (!positionValid);
 
-        usedPositions.Add(randomSpawnPoint);
+            usedPositions.Add(randomSpawnPoint);
 
-        float randomYRotation = Random.Range(0, 8) * 45.0f;
-        Quaternion randomRotation = Quaternion.Euler(0, randomYRotation, 0);
+            float randomYRotation = Random.Range(0, 8) * 45.0f;
+            Quaternion randomRotation = Quaternion.Euler(0, randomYRotation, 0);
 
-        GameObject newPrefab = Instantiate(prefabToSpawn, randomSpawnPoint, randomRotation);
-        newPrefab.AddComponent<PrefabBehavior>().Initialize(moveSpeed, moveDirection, correctRotation, this);
+            GameObject newPrefab = Instantiate(prefabToSpawn, randomSpawnPoint, randomRotation);
+            newPrefab
+                .AddComponent<PrefabBehavior>()
+                .Initialize(moveSpeed, moveDirection, correctRotation, this);
+        }
     }
-}
 
     public void IncrementCorrectCount()
     {
@@ -107,7 +98,12 @@ public class PrefabBehavior : MonoBehaviour
     private Quaternion correctRotation;
     private PrefabManager prefabManager;
 
-    public void Initialize(float speed, Vector3 direction, Quaternion correctRotation, PrefabManager manager)
+    public void Initialize(
+        float speed,
+        Vector3 direction,
+        Quaternion correctRotation,
+        PrefabManager manager
+    )
     {
         this.speed = speed;
         this.direction = direction.normalized;

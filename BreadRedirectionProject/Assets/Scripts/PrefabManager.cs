@@ -19,12 +19,6 @@ public class PrefabManager : MonoBehaviour
     [SerializeField]
     private Quaternion correctRotation;
 
-    [SerializeField]
-    TextMeshProUGUI correctText;
-
-    [SerializeField]
-    TextMeshProUGUI incorrectText;
-
     public int correctCount = 0;
     public int incorrectCount = 0;
 
@@ -33,9 +27,6 @@ public class PrefabManager : MonoBehaviour
         correctRotation = Quaternion.Euler(0, Random.Range(0, 8) * 45.0f, 0);
         Instantiate(correctIndicatorPrefab, correctIndicatorPosition, correctRotation);
         InvokeRepeating("SpawnAndMovePrefabs", 0.0f, spawnInterval);
-
-        correctText.text = ": 0";
-        incorrectText.text = ": 0";
     }
 
     private void SpawnAndMovePrefabs()
@@ -81,13 +72,11 @@ public class PrefabManager : MonoBehaviour
     public void IncrementCorrectCount()
     {
         correctCount++;
-        correctText.text = ": " + correctCount;
     }
 
     public void IncrementIncorrectCount()
     {
         incorrectCount++;
-        incorrectText.text = ": " + incorrectCount;
     }
 }
 

@@ -1493,7 +1493,7 @@ MonoBehaviour:
   correctIndicatorPrefab: {fileID: 1609834384392540837, guid: 1a5651c4e3fcacf4497eedadb8008905, type: 3}
   spawnPoint: {x: 0, y: 0.5, z: 5.5}
   correctIndicatorPosition: {x: -2, y: 1.5, z: 4.5}
-  spawnInterval: 1.5
+  spawnInterval: 2
   numberOfPrefabs: 2
   moveSpeed: 0.5
   moveDirection: {x: 0, y: 0, z: -1}

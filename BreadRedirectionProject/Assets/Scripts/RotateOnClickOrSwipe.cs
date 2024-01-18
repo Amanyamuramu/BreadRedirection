@@ -8,6 +8,14 @@ public class RotateOnClickOrSwipe : MonoBehaviour
     private Vector2 endTouchPosition; // スワイプ終了位置
     private bool swipeDetected = false; // スワイプ検出フラグ
 
+    public AudioClip tapSound;
+    public AudioClip swipeSound;
+    private AudioSource audioSource;
+
+    private void Start(){
+        audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
     private void Update()
     {
         // タッチ入力を検出（モバイル）
@@ -49,6 +57,7 @@ public class RotateOnClickOrSwipe : MonoBehaviour
             if (hit.transform == transform)
             {
                 RotateObject(rotationAngle);
+                audioSource.PlayOneShot(tapSound);
             }
         }
     }
@@ -64,6 +73,7 @@ public class RotateOnClickOrSwipe : MonoBehaviour
             if (hit.transform == transform && swipeDetected)
             {
                 RotateObject(swipeRotationAngle);
+                audioSource.PlayOneShot(swipeSound);
                 swipeDetected = false;
             }
         }

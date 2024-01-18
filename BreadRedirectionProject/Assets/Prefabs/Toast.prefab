@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ef04f81ddb09b40a3ca0138078bc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tapSound: {fileID: 8300000, guid: 827234e9bd8f961468a3b5039010f0e9, type: 3}
+  swipeSound: {fileID: 8300000, guid: 711899d37d092b846aaa1b38301fd8c4, type: 3}
 --- !u!65 &1461878145255449536
 BoxCollider:
   m_ObjectHideFlags: 0

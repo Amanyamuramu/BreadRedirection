@@ -6,13 +6,14 @@ public class ScoreCalculator : MonoBehaviour
     public PrefabManager prefabManager;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI BreadNumText;
+    public int breadNum = 0;
 
-    [SerializeField] int breadNum;
+    public int scoreMoney = 0;
 
     private void Update()
     {
-        int score = CalculateScore();
-        moneyText.text = $"お金：{score}円";
+        scoreMoney = CalculateScore();
+        moneyText.text = $"お金：{scoreMoney}円";
 
         breadNum = prefabManager.correctCount+prefabManager.incorrectCount;
 

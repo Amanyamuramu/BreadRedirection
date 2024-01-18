@@ -11,7 +11,7 @@ public class PrefabManager : MonoBehaviour
     public Vector3 correctIndicatorPosition;
     public float spawnInterval = 2.0f;
     public int numberOfPrefabs = 1;
-    float moveSpeed = 0.5f;
+    public float moveSpeed = 0.5f;
     Vector3 moveDirection = new Vector3(0, 0, -1);
     float minX = -2.0f;
     float maxX = 2.0f;

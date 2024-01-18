@@ -40,11 +40,11 @@ public class PrefabManager : MonoBehaviour
         elapsedTime += Time.deltaTime;
 
         // 経過時間に応じてnumberOfPrefabsの値を更新
-        if (elapsedTime >= 40.0f)
+        if (elapsedTime >= 30.0f)
         {
             numberOfPrefabs = 3;
         }
-        else if (elapsedTime >= 20.0f)
+        else if (elapsedTime >= 15.0f)
         {
             numberOfPrefabs = 2;
         }

@@ -1,5 +1,5 @@
 # Bread Redirection
-<img width="320" alt="SCR-20230502-nedr" src="https://github.com/Amanyamuramu/BreadRedirection/assets/92976267/5d4e63e8-2273-4b58-a21f-79660525a85e" >
+<img width="180" alt="SCR-20230502-nedr" src="https://github.com/Amanyamuramu/BreadRedirection/assets/92976267/5d4e63e8-2273-4b58-a21f-79660525a85e" >
 
 
 ## コンセプト
